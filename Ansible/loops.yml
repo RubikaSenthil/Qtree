@@ -1,0 +1,19 @@
+---
+- name: loops in ansible
+  hosts: ubuntu
+  become: yes
+  vars:
+    software_packages:
+      - openjdk-11-jdk
+      - python3
+      - nginx
+      - mysql-server
+  tasks: 
+    - name: Update apt cache
+      apt: 
+        update_cache: yes
+    - name: Install software package
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ software_packages }}"

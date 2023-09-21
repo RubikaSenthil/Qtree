@@ -1,0 +1,17 @@
+---
+- name: Install Ngnix package in system
+  hosts: all
+  become: yes #to become root user
+  tasks: 
+    - name: Install nginx in ubuntu
+      apt:
+        update_cache: yes #update apt
+        name: nginx
+        state: present
+      when: ansible_distribution == 'ubuntu'
+    - name: Install nginx in Amazon
+      dnf:
+        name: nginx
+        state: present
+      when: ansible_distribution == 'Amazon'
+

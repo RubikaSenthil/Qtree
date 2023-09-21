@@ -1,0 +1,12 @@
+---
+- name: Qtree server setup
+  hosts: all
+  tasks: 
+    - name: create a user
+      user:
+        name: anisble
+        password: rubi@123
+    - name: create a file
+      file:
+        name: server
+        path: /root/ubuntu
